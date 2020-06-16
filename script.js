@@ -14,7 +14,10 @@ const landmark = async() => {
   const eyebrow=detection[0].landmarks.getLeftEyeBrow()
   const nose = detection[0].landmarks.getNose()
 
+  const leftEyeMaskCentroid = [158,118]
+  const rightEyeMaskCentroid = [454,118]
   
+  const maskEyesCentroid = [(leftEyeMaskCentroid[0] + rightEyeMaskCentroid[0])/2, 118]
 
   const jawLeft = jawline[0]
   const jawRight = jawline[16]
@@ -27,6 +30,13 @@ const landmark = async() => {
   const left_x_avg=(leftEye[0].x+leftEye[1].x+leftEye[3].x+leftEye[4].x+leftEye[5].x+leftEye[2].x)/6
   const left_y_avg=(leftEye[0].y+leftEye[1].y+leftEye[3].y+leftEye[4].y+leftEye[5].y+leftEye[2].y)/6
   
+  const leftEyeCentroid = [left_x_avg, left_y_avg]
+  const rightEyeCentroid = [right_x_avg, right_y_avg]
+
+  const eyesCentroid = [(leftEyeCentroid[0] + rightEyeCentroid[0])/2, (leftEyeCentroid[1] + rightEyeCentroid[1])/2]
+
+
+  
   const dist = right_x_avg-left_x_avg
   const eyedist = Math.sqrt(Math.pow(right_x_avg-left_x_avg, 2) + Math.pow(right_y_avg-left_y_avg, 2))
 
@@ -36,9 +46,14 @@ const landmark = async() => {
   const leftMask_by_leftEye=0.25
 
   const h=(left_y_avg-eyebrow[2].y)/eyebrow_by_eye
+
+  const width = eyedist/mask_by_eye
+  const height = width * 480 / 1280
+  const newOffsetTop = eyesCentroid[1] - height/2
+  const newOffsetLeft = eyesCentroid[0] - width/2
   
   
-  const angle=(left_y_avg-right_y_avg)/(left_x_avg-right_x_avg)
+  const angleEyes=Math.atan((left_y_avg-right_y_avg)/(left_x_avg-right_x_avg)) * 180 / Math.PI
   const leftOffset= left_x_avg-(leftMask_by_leftEye*(eyedist/mask_by_eye));
   const topOffset= eyebrow[2].y;
 
@@ -60,10 +75,10 @@ const landmark = async() => {
   overlay.alt = "mask overlay."
   overlay.style.cssText = `
     position: absolute;
-    left: ${leftOffset}px;
-    top: ${topOffset}px;
+    left: ${newOffsetLeft}px;
+    top: ${newOffsetTop}px;
     width: ${eyedist/mask_by_eye}px;
-    transform: rotate(${jawangle}deg);
+    transform: rotate(${angleEyes}deg);
     z-index:1;
   `
   //console.log(document.querySelector(".mask"))
