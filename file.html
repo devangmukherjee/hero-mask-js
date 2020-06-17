@@ -17,13 +17,13 @@
         </style>
     </head>
     <body>
-        <div>
-            <h1 style="text-align:center">PUT MASK ON FACE</h1>
-        </div>
-        <div class="grid-item">
-        <img class="face" src="emotions.jpg" alt="" />
-        <script src="face-api.min.js"></script>
-        <script src="script.js"></script>
+      
+        <p><input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile()" style="display: none;"></p>
+        <p><label for="file" style="cursor: pointer;">Upload Image</label></p>
+        <p><img id="output" /></p>
+        <div class="grid-item"></div>
+            <script src="face-api.min.js"></script>
+            <script src="file.js"></script>
         </div>
     </body>
 </html>
