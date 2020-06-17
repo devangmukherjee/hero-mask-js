@@ -1,4 +1,10 @@
 var loadFile = async() => {
+    const previousMask = document.getElementById('mask')
+    if (previousMask) {
+      previousMask.remove()
+    }
+    
+
     var image = document.getElementById('output');
     image.src = URL.createObjectURL(event.target.files[0]);
     await faceapi.nets.tinyFaceDetector.loadFromUri('/models'),
@@ -39,6 +45,7 @@ var loadFile = async() => {
     const overlay = document.createElement("img")
     overlay.src = "./mask.png"
     overlay.alt = "mask overlay."
+    overlay.id = "mask"
     overlay.style.cssText = `
       position: absolute;
       left: ${newOffsetLeft}px;
