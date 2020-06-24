@@ -1,5 +1,10 @@
+// var fs    = require('fs');
+// var jspng = require('jspng');
+
 var loadFile = async() => {
-    const previousMask = document.getElementById('mask')
+  
+
+  const previousMask = document.getElementById('mask')
     if (previousMask) {
       previousMask.remove()
     }
@@ -11,10 +16,7 @@ var loadFile = async() => {
     await faceapi.nets.faceLandmark68Net.loadFromUri('/models');
     
     const canvas = faceapi.createCanvasFromMedia(image);
-    const context = canvas.getContext('2d');
-    console.log(context)
-
-    
+    var context = canvas.getContext("2d");
     const detection = await faceapi.detectAllFaces(canvas, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks();
   
     const rightEye=detection[0].landmarks.getRightEye()
@@ -55,9 +57,23 @@ var loadFile = async() => {
       z-index:1;
     `
   
-    item.appendChild(overlay);    
-    context.clearRect(0, 0, canvas.width, canvas.height);
-    console.log(context)
+    item.appendChild(overlay); 
+    
+    // var pixels = jspng.Buffer(128 * 128 * 4).fill(new Buffer([ 0x00, 0x00, 0xff, 0x88 ]));
+  
+    // var png = new jspng(pixels, { width: 128, height: 128, inputmode: 'rgba', meta: { 'Software': jspng.VERSION }});
+    
+    // fs.writeFileSync('jspng.png', png.toBuffer());
 
 };
+
+// function putImage()
+// {
+//   var canvas1 = document.getElementById("output");        
+//   if (canvas1.getContext) {
+//      var ctx = canvas1.getContext("2d");                
+//      var img = canvas1.toDataURL("image/png");      
+//   }
+//   document.write('<img src="'+img+'"/>');
+// }  
 
