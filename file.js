@@ -51,7 +51,7 @@ var loadFile = async() => {
     overlay.style.cssText = `
       position: absolute;
       left: ${newOffsetLeft}px;
-      top: ${newOffsetTop+50}px;
+      top: ${newOffsetTop+150}px;
       width: ${eyedist/mask_by_eye}px;
       transform: rotate(${angleEyes}deg);
       z-index:1;
@@ -59,21 +59,7 @@ var loadFile = async() => {
   
     item.appendChild(overlay); 
     
-    // var pixels = jspng.Buffer(128 * 128 * 4).fill(new Buffer([ 0x00, 0x00, 0xff, 0x88 ]));
-  
-    // var png = new jspng(pixels, { width: 128, height: 128, inputmode: 'rgba', meta: { 'Software': jspng.VERSION }});
     
-    // fs.writeFileSync('jspng.png', png.toBuffer());
 
 };
-
-// function putImage()
-// {
-//   var canvas1 = document.getElementById("output");        
-//   if (canvas1.getContext) {
-//      var ctx = canvas1.getContext("2d");                
-//      var img = canvas1.toDataURL("image/png");      
-//   }
-//   document.write('<img src="'+img+'"/>');
-// }  
 

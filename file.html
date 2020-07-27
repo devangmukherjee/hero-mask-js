@@ -1,74 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <title>Emotion Decetion With face-api.js</title>
-        <style>
-            body {
-                margin: 0;
-            }
-            canvas {
-                position: absolute;
-                top: 0;
-                left: 0;
-            }
-        </style>
-    </head>
-    <body>
-        <div id='photo'>
-        <p><input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile()" style="display: none;"></p>
-        <p><label for="file" style="cursor: pointer;">Upload Image</label></p>
-        <p><img id="output" /></p>
-        <button onclick="ss()">screenshot</button>
-        <div class="grid-item"></div>
-            <script src="face-api.min.js"></script>
-            <script src="file.js"></script>
-            <script src="html2canvas.js"></script>
-        </div>
-        </div>
-        <script>
-            function ss(){
-            html2canvas(document.querySelector('file')).then(canvas => {
-                document.body.appendChild(canvas)
-            });
-            console.log(canvas);
-        }
-        </script>
 
-    </body>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Emotion Decetion With face-api.js</title>
+    <style>
+        .footer {
+        position: fixed;
+        margin-top: 5px;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: lightslategray;
+        color: black;
+        text-align: center;
+        }
+        body {
+            margin: 0;
+        }
+
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="p-3 mb-2 bg-dark text-white">
+        <h3>PUT HERO MASK ON FACE<small class="text-muted"> written in javascript</small>
+        </h3>
+    </div>
+    <div id='photo'>
+        <p><input type="file" accept="image/*" name="image" id="file" onchange="loadFile()" style="display: none;"></p>
+        <button type="button" class="btn btn-success">
+            <label for="file" style="cursor: pointer;" class="lead">Upload Face Image</label>
+        </button>
+        <p><img id="output" /></p>
+        <div class="grid-item"></div>
+        <script src="face-api.min.js"></script>
+        <script src="file.js"></script>
+        <script src="html2canvas.js"></script>
+    </div>
+    </div>
+    <div class="float-left">
+    <div class="container">
+
+        <div class="panel-group">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" href="#collapse1"> What is so special about this?</a>
+                    </h4>
+                </div>
+                <div id="collapse1" class="panel-collapse collapse">
+                    <div class="panel-body">Usually, computer vision tasks like these are performed using python and
+                        it's libraries like OpenCV. Making them harder to deploy on websites written completely in
+                        javascript (NodeJS). To bridge this prominent gap <strong>this entire program is written in
+                            javascript.</strong> It uses a library called face api-js. So that's why now programs like
+                        these are easily deployable on majority websites which are written in javascript.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br><br><br><br><br><br><br><br>
+
+
+<div>
+    <p>For the soure code click here </p>
+    <a href="https://github.com/">
+        <img src="download.png" alt="Source code" style="width:100px;height:42px;">
+        </a>
+</div>
+<div class="footer">
+    <p><strong>Made by Devang Mukherjee </strong><a href="https://www.linkedin.com/in/devang2/">
+        <img src="linkedin.jpeg" alt="Source code" style="width:30px;height:25px;">
+        </a></p>
+  </div>
+</body>
+
 </html>
 
 
-<!-- <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <title>Emotion Decetion With face-api.js</title>
-        <style>
-            body {
-                margin: 0;
-            }
-            canvas {
-                position: absolute;
-                top: 0;
-                left: 0;
-            }
-        </style>
-    </head>
-    <body>
-      
-        <p><input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile()" style="display: none;"></p>
-        <p><label for="file" style="cursor: pointer;">Upload Image</label></p>
-        <a href="/sabrina.jpeg" download>
-            <p><img id="output"/></p>
-        </a>
-        <div class="grid-item"></div>
-            <script src="face-api.min.js"></script>
-            <script src="file.js"></script>
-        </div>
-    </body>
-</html> -->
